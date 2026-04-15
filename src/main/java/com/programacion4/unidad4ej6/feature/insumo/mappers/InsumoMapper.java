@@ -23,9 +23,11 @@ public class InsumoMapper {
                 .stockActual(insumo.getStockActual())
                 .activo(insumo.getActivo())
                 .precioActual(
-                    insumo.getHistorialPrecios().isEmpty() 
-                    ? BigDecimal.ZERO
-                    : insumo.getHistorialPrecios().get(insumo.getHistorialPrecios().size() - 1).getPrecio()
+                        insumo.getHistorialPrecios() == null || insumo.getHistorialPrecios().isEmpty()
+                                ? BigDecimal.ZERO
+                                : insumo.getHistorialPrecios()
+                                .get(insumo.getHistorialPrecios().size() - 1)
+                                .getPrecio()
                 )
                 .historialPrecios(
                     insumo.getHistorialPrecios().isEmpty() 

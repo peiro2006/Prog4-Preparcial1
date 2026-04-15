@@ -7,8 +7,9 @@ import com.programacion4.unidad4ej6.feature.insumo.services.interfaces.domain.II
 import com.programacion4.unidad4ej6.feature.insumo.dtos.response.InsumoResponseDTO;
 import com.programacion4.unidad4ej6.feature.insumo.mappers.InsumoMapper;
 import com.programacion4.unidad4ej6.feature.insumo.services.interfaces.commons.IInsumoFindByIdService;
+import org.springframework.stereotype.Service;
 
-
+@Service
 @AllArgsConstructor
 public class InsumoGetService implements IInsumoGetService {
     

@@ -2,6 +2,7 @@ package com.programacion4.unidad4ej6.feature.insumo.services.impl.domain;
 
 import java.util.ArrayList;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ import com.programacion4.unidad4ej6.config.exceptions.ConflictException;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class InsumoCreateService implements IInsumoCreateService {
     
     private final IInsumoRepository insumoRepository;

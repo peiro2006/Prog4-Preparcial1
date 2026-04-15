@@ -13,14 +13,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 @Entity
 @Table(name = "historial_precios")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor 
 @AllArgsConstructor
 @Builder

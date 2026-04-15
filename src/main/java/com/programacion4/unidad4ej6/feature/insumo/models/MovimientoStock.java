@@ -13,19 +13,22 @@ import jakarta.persistence.EnumType;
 
 import java.time.LocalDateTime;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Builder;
+import lombok.*;
+
 @Entity
 @Table(name = "movimientos_stock")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor 
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
 public class MovimientoStock {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(nullable = false)

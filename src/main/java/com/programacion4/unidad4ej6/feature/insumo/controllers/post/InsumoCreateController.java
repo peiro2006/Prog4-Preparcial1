@@ -29,7 +29,7 @@ public class InsumoCreateController {
         @Valid @RequestBody InsumoCreateDTO dto
     ) {
         InsumoResponseDTO insumoResponseDTO = insumoCreateService.createInsumo(dto);
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        return ResponseEntity.status(HttpStatus.CREATED)
         .body(
             BaseResponse.ok(
                 insumoResponseDTO, 

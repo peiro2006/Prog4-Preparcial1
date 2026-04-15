@@ -1,5 +1,6 @@
 package com.programacion4.unidad4ej6.feature.insumo.services.impl.domain;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,11 @@ import com.programacion4.unidad4ej6.feature.insumo.models.Insumo;
 import com.programacion4.unidad4ej6.feature.insumo.mappers.MovimientoStockMapper;
 import com.programacion4.unidad4ej6.feature.insumo.models.TipoMovimiento;
 
-@Service
+@AllArgsConstructor
 public class InsumoMoverStockService implements IInsumoMoverStockService {
-    
-    @Autowired
+
     private IInsumoFindByIdService insumoFindByIdService;
 
-    @Autowired
     private IInsumoRepository insumoRepository;
 
     @Override
@@ -28,18 +27,16 @@ public class InsumoMoverStockService implements IInsumoMoverStockService {
 
         Insumo insumo = insumoFindByIdService.findByIdAndActivoTrue(id);
 
-        // Si el tipo de movimiento es entrada, se suma el stock actual
-        if (dto.getTipoMovimiento().name().equals(TipoMovimiento.ENTRADA.name())) {
-
+        if (dto.getTipoMovimiento() == TipoMovimiento.ENTRADA) {
             insumo.setStockActual(insumo.getStockActual() + dto.getCantidad());
 
-        // Si el tipo de movimiento es salida, se resta el stock actual
-        // siempre y cuando el stock actual sea mayor o igual a la cantidad a restar
-        } else if (insumo.getStockActual() >= dto.getCantidad()) {
+        } else if (dto.getTipoMovimiento() == TipoMovimiento.SALIDA) {
+
+            if (insumo.getStockActual() < dto.getCantidad()) {
+                throw new BadRequestException("No hay suficiente stock");
+            }
 
             insumo.setStockActual(insumo.getStockActual() - dto.getCantidad());
-
-        // Si el stock actual es menor a la cantidad a restar, se lanza una excepción
         } else {
             throw new BadRequestException("No hay suficiente stock para realizar la salida");
         }

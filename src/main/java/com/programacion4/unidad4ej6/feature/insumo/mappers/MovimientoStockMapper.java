@@ -25,6 +25,6 @@ public class MovimientoStockMapper {
                 .insumo(insumo)
                 .build();
 
-        return new MovimientoStock();
+         return new MovimientoStock();
     }
 }

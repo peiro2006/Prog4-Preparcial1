@@ -1,5 +1,6 @@
 package com.programacion4.unidad4ej6.feature.insumo.services.impl.domain;
 
+import com.programacion4.unidad4ej6.feature.insumo.services.interfaces.domain.IInsumoRecoveryService;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -10,7 +11,7 @@ import com.programacion4.unidad4ej6.feature.insumo.models.Insumo;
 
 @Service
 @AllArgsConstructor
-public class InsumoRecoveryService {
+public class InsumoRecoveryService implements IInsumoRecoveryService {
     
     private final IInsumoFindDeletedByIdService insumoFindDeletedByIdService;
 

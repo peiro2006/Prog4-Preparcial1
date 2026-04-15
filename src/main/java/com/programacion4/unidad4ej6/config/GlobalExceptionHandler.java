@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
         BaseResponse<Object> response = BaseResponse.builder()
                 .message(ex.getMessage())
                 .errors(ex.getErrors())
-                .timestamp(Instant.now().toString())
+                .timestamp(BaseResponse.ok(null, null).getTimestamp())
                 .build();
 
         return new ResponseEntity<>(response, ex.getStatus());
